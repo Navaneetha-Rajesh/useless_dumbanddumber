@@ -496,7 +496,7 @@ class BhaskarEngine {
 
     this.react(
       'approve',
-      "Ha! Angane venam irikkan!",
+      'Ha! Angane venam irikkan!',
       3500
     );
   }
