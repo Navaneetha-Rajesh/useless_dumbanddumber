@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Background Image Setup */
+  background: url('assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Header & Logo */
+.top-nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+#logo {
+  width: 75px;
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#logo:hover {
+  transform: scale(1.1) rotate(4deg);
+  filter: drop-shadow(0px 6px 15px rgba(0, 0, 0, 0.6));
+}
+
+/* Stage & Bhaskar Container */
+#stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#bhaskar-container {
+  position: absolute;
+  bottom: 40px;
+  left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+#bhaskar-avatar {
+  height: 330px;
+  width: auto;
+  user-select: none;
+  filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.4)); /* Adds depth over background */
+}
+
+/* Speech Bubble */
+#speech-bubble {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 14px;
+  max-width: 260px;
+  text-align: center;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: popIn 0.2s ease-out;
+}
+
+#speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.95) transparent;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Glassmorphism Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  padding: 32px;
+  color: #ffffff;
+  width: 85%;
+  max-width: 460px;
+}
+
+.glass h2 {
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glass p {
+  line-height: 1.6;
+  font-size: 0.98rem;
+  color: #f0f0f0;
+}
+
+#close-modal {
+  float: right;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s;
+}
+
+#close-modal:hover {
+  color: #ff5555;
+}
+
+.hidden {
+  display: none !important;
+}

@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badai Bhaskar</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- TensorFlow & MediaPipe Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+</head>
+<body>
 
+  <!-- Top Right Logo -->
+  <header class="top-nav">
+    <img src="assets/logo.png" id="logo" alt="Badai Bhaskar Logo">
+  </header>
+
+  <!-- Stage Area (Ammavan Canvas) -->
+  <main id="stage">
+    <div id="bhaskar-container">
+      <div id="speech-bubble" class="hidden"></div>
+      <img id="bhaskar-avatar" src="assets/avatar/uncle-idle.png" alt="Badai Bhaskar">
+    </div>
+  </main>
+
+  <!-- Hidden Camera Stream for Background Processing -->
+  <video id="webcam" autoplay playsinline muted style="display: none;"></video>
+
+  <!-- Glassmorphism Explainer Modal -->
+  <div id="info-modal" class="modal hidden">
+    <div class="modal-content glass">
+      <span id="close-modal">&times;</span>
+      <h2>About Badai Bhaskar</h2>
+      <p>Welcome to the domain of Badai Bhaskar—the self-proclaimed legend who studied under three streetlights at once. He keeps a watchful eye on your posture, smartphone habits, and life choices in real time.</p>
+    </div>
+  </div>
+
+  <script src="js/bhaskarEngine.js"></script>
+  <script src="js/detectionEngine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
