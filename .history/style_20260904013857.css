@@ -420,10 +420,6 @@ body, html {
     width: 18%;
     height: 23%;
 
-    background: transparent;
-    border: none;
-    outline: none;
-
-    cursor: pointer;
-    z-index: 1000;
+    background: transparent
+    
 }

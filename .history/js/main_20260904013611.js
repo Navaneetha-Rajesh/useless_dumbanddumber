@@ -1,70 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // =========================
+    // GOAT SOUND
+    // =========================
 
-  // ======================================
-  // LOGO & MODAL
-  // ======================================
-
-  const logo = document.getElementById("logo");
-  const modal = document.getElementById("info-modal");
-  const closeModal = document.getElementById("close-modal");
-
-  console.log("Logo:", logo);
-  console.log("Modal:", modal);
-  console.log("Close button:", closeModal);
-
-
-  // ======================================
-  // GOAT SOUND
-  // ======================================
-
-  const goatHotspot = document.getElementById("goat-hotspot");
-  const goatSound = new Audio("assets/sounds/goat.mp3");
-
-  if (goatHotspot) {
+    const goatHotspot = document.getElementById("goat-hotspot");
+    const goatSound = new Audio("assets/sounds/goat.mp3");
 
     goatHotspot.addEventListener("click", () => {
-
-      console.log("🐐 GOAT CLICKED");
-
-      goatSound.currentTime = 0;
-
-      goatSound.play().catch(error => {
-        console.error("Goat sound failed:", error);
-      });
-
+        goatSound.currentTime = 0;
+        goatSound.play();
     });
-
-  }
-
-
-  // ======================================
-  // HOUSE EASTER EGG
-  // ======================================
-
-  const houseHotspot = document.getElementById("house-hotspot");
-
-  console.log("House:", houseHotspot);
-
-  if (houseHotspot && modal) {
-
-    houseHotspot.addEventListener("click", () => {
-
-      console.log("🏠 HOUSE CLICKED");
-
-      // Open About modal
-      modal.classList.remove("hidden");
-
-      // Bhaskar reacts
-      if (typeof bhaskar !== "undefined") {
-
-        bhaskar.lookAtLogoModal();
-
-      }
-
-    });
-
-  }
-
 
   // ======================================
   // ANIMATED BACKGROUND
@@ -79,15 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let backgroundIndex = 0;
 
-
   // Preload backgrounds
   backgroundFrames.forEach(src => {
-
     const img = new Image();
     img.src = src;
-
   });
-
 
   // Change background every 1 second
   setInterval(() => {
@@ -102,7 +43,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // ======================================
-  // OPEN MODAL FROM LOGO
+  // LOGO & MODAL
+  // ======================================
+
+  const logo = document.getElementById("logo");
+  const modal = document.getElementById("info-modal");
+  const closeModal = document.getElementById("close-modal");
+
+
+  // Check that elements exist
+  console.log("Logo:", logo);
+  console.log("Modal:", modal);
+  console.log("Close button:", closeModal);
+
+
+  // ======================================
+  // OPEN MODAL
   // ======================================
 
   if (logo && modal) {
@@ -113,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       modal.classList.remove("hidden");
 
+      // Bhaskar reaction
       if (typeof bhaskar !== "undefined") {
 
         bhaskar.lookAtLogoModal();

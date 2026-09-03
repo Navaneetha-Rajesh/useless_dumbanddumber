@@ -48,7 +48,7 @@ class BhaskarEngine {
       "Ah... strong tea, like my opinions.": "assets/audio/tea-sip.mp3",
 
       // Slouching, Sleeping, Good Posture
-      "Ahhh!!! Kuninju koodi irikaathe nivarnnu iri angoodu": "assets/audio/audio.mp3",
+      "Ahhh!!! Kuninju koodi ": "assets/audio/audio.mp3",
       "എണീക്ക് മോനേ! ജോലി സമയത്ത് ഉറക്കമോ?!": "assets/audio/audio.mp3",
       "ഹമ്മ്... കൊള്ളാം. ഇങ്ങനെ തന്നെ ഇരിക്ക്.": "assets/audio/good-posture.mp3",
 
