@@ -11,48 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Logo:", logo);
   console.log("Modal:", modal);
   console.log("Close button:", closeModal);
-  // ======================================
-// MANGO Badai STORIES 🥭
-// ======================================
-
-const mangoStories = [
-  new Audio("assets/audio/badai-1.mp3"),
-  new Audio("assets/audio/badai-2.mp3"),
-  new Audio("assets/audio/badai-3.mp3"),
-  new Audio("assets/audio/badai-4.mp3")
-];
-
-const mangoButtons = [
-  document.getElementById("mango-1"),
-  document.getElementById("mango-2"),
-  document.getElementById("mango-3"),
-  document.getElementById("mango-4")
-];
-
-mangoButtons.forEach((mango, index) => {
-
-  if (mango) {
-
-    mango.addEventListener("click", () => {
-
-      console.log(`🥭 Mango ${index + 1} clicked!`);
-
-      // Stop any currently playing Badai story
-      mangoStories.forEach(audio => {
-        audio.pause();
-        audio.currentTime = 0;
-      });
-
-      // Play selected story
-      mangoStories[index].play().catch(error => {
-        console.error("Badai story playback failed:", error);
-      });
-
-    });
-
-  }
-
-});
+  
 
   // ======================================
   // GOAT SOUND

@@ -427,46 +427,20 @@ body, html {
     cursor: pointer;
     z-index: 1000;
 }
-/* ======================================
-   MANGOES 🥭
-   ====================================== */
-
 .mango {
     position: absolute;
-
     background: transparent;
     border: none;
-    outline: none;
-
     padding: 0;
-    margin: 0;
-
-    font-size: 22px;
-    line-height: 1;
-
+    font-size: 24px;
     cursor: pointer;
-
     z-index: 1000;
-
-    appearance: none;
-    -webkit-appearance: none;
-
     transition: transform 0.2s ease;
 }
 
-/* Hover effect */
 .mango:hover {
-    transform: scale(1.3) rotate(-8deg);
+    transform: scale(1.2);
 }
-
-/* Remove focus rectangle */
-.mango:focus {
-    outline: none;
-}
-
-/* ======================================
-   MANGO POSITIONS
-   ====================================== */
 
 #mango-1 {
     left: 5%;
@@ -486,31 +460,4 @@ body, html {
 #mango-4 {
     left: 10%;
     top: 10%;
-}
-
-
-/* ======================================
-   MANGO CLICK ANIMATION
-   ====================================== */
-
-@keyframes mangoBounce {
-    0% {
-        transform: scale(1);
-    }
-
-    40% {
-        transform: scale(1.35) rotate(-8deg);
-    }
-
-    70% {
-        transform: scale(0.9) rotate(5deg);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.mango.playing {
-    animation: mangoBounce 0.5s ease;
 }
