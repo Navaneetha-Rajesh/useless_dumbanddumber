@@ -6,13 +6,22 @@
   <title>Badai Bhaskar</title>
   <link rel="stylesheet" href="style.css">
   
+ 
   <!-- TensorFlow & MediaPipe Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-cpu"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
 </head>
 <body>
+
+    <!-- Top Right Logo & Status Tag -->
+  <header class="top-nav">
+    <div id="status-tag" class="hidden">📱 Phone Detected</div>
+    <img src="assets/logo.png" id="logo" alt="Badai Bhaskar Logo">
+  </header>
 
   <!-- Top Right Logo -->
   <header class="top-nav">
@@ -28,7 +37,9 @@
   </main>
 
   <!-- Hidden Camera Stream for Background Processing -->
-  <video id="webcam" autoplay playsinline muted style="display: none;"></video>
+  <video id="webcam" autoplay playsinline muted style="display: none;">
+    document.getElementById('webcam').style.display = 'block';
+  </video>
 
   <!-- Glassmorphism Explainer Modal -->
   <div id="info-modal" class="modal hidden">
