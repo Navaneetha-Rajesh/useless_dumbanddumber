@@ -13,106 +13,99 @@ class DetectionEngine {
   }
 
   async init() {
-  try {
-    console.log("Starting webcam...");
+    try {
+      console.log("Starting webcam...");
 
-    // ==========================================
-    // TensorFlow
-    // ==========================================
+      // ================================
+      // TensorFlow backend
+      // ================================
 
-    if (window.tf) {
-      await tf.setBackend("webgl");
-      await tf.ready();
+      if (window.tf) {
+        await tf.setBackend("webgl");
+        await tf.ready();
 
-      console.log(
-        "TensorFlow ready:",
-        tf.getBackend()
-      );
-    }
+        console.log("TensorFlow ready:", tf.getBackend());
+      }
 
-    // ==========================================
-    // WEBCAM
-    // ==========================================
+      // ================================
+      // Request webcam
+      // ================================
 
-    const stream =
-      await navigator.mediaDevices.getUserMedia({
-        video: {
-          width: 640,
-          height: 480,
-          facingMode: "user"
-        },
-        audio: false
-      });
+      const stream =
+        await navigator.mediaDevices.getUserMedia({
+          video: {
+            width: 640,
+            height: 480,
+            facingMode: "user"
+          },
+          audio: false
+        });
 
-    this.video.srcObject = stream;
+      this.video.srcObject = stream;
 
-    console.log("Webcam started");
+      console.log("Webcam started");
 
-    // IMPORTANT
-    await this.video.play();
+      // ================================
+      // Load MoveNet
+      // ================================
 
-    console.log("Video playing");
+      console.log("Loading pose detector...");
 
-    // ==========================================
-    // POSE DETECTOR
-    // ==========================================
+      this.poseDetector =
+        await poseDetection.createDetector(
+          poseDetection.SupportedModels.MoveNet,
+          {
+            modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING
+          }
+        );
 
-    console.log("Loading pose detector...");
+      console.log("Pose detector ready");
 
-    this.poseDetector =
-      await poseDetection.createDetector(
-        poseDetection.SupportedModels.MoveNet,
-        {
-          modelType:
-            poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING
-        }
-      );
+      // ================================
+      // Load COCO-SSD
+      // ================================
 
-    console.log("Pose detector ready");
+      console.log("Loading object detector...");
 
-    // ==========================================
-    // OBJECT DETECTOR
-    // ==========================================
+      this.objectDetector =
+        await cocoSsd.load();
 
-    console.log("Loading object detector...");
+      console.log("Object detector ready");
 
-    this.objectDetector =
-      await cocoSsd.load();
+      // ================================
+      // Start detection
+      // ================================
 
-    console.log("Object detector ready");
+      this.video.onloadeddata = () => {
 
-    // ==========================================
-    // START DETECTION
-    // ==========================================
+        console.log("Starting detection loop...");
 
-    this.isDetecting = true;
+        this.isDetecting = true;
 
-    console.log("Starting detection loop...");
+        this.detectLoop();
+      };
 
-    this.detectLoop();
+    } catch (error) {
 
-  } catch (error) {
-
-    console.error(
-      "Webcam / AI initialization failed:",
-      error
-    );
-
-    if (error.name === "NotAllowedError") {
-
-      alert(
-        "Please allow camera access for Badai Bhaskar 😈"
+      console.error(
+        "Webcam / AI initialization failed:",
+        error
       );
 
-    } else {
+      if (error.name === "NotAllowedError") {
 
-      alert(
-        "Could not start the webcam. Check the console."
-      );
+        alert(
+          "Please allow camera access for Badai Bhaskar to judge you 😈"
+        );
 
+      } else {
+
+        alert(
+          "Could not start the webcam. Check the console for details."
+        );
+      }
     }
   }
-}
 
   // ==========================================
   // DETECTION LOOP
