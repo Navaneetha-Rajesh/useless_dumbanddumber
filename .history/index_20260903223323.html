@@ -23,39 +23,13 @@
 </header>
 
   <!-- Stage Area (Ammavan Canvas) -->
-<main id="stage">
-
-    <!-- 🐐 Invisible clickable area over the goat -->
-    <button
-        id="goat-hotspot"
-        type="button"
-        aria-label="Click the goat">
-    </button>
-
-    <!-- 🐐 Goat sound -->
-    <audio id="goat-sound" preload="auto">
-        <source src="assets/sounds/goat.mp3" type="audio/mpeg">
-    </audio>
-
+  <main id="stage">
+    <button id="goat-hotspot" aria-label="Goat"></button>
     <div id="bhaskar-container">
-        <div id="speech-bubble"></div>
-
-        <img
-            id="bhaskar-avatar"
-            src="assets/avatar/uncle-idle.png"
-            alt="Badai Bhaskar">
+      <div id="speech-bubble" class="hidden"></div>
+      <img id="bhaskar-avatar" src="assets/avatar/uncle-idle.png" alt="Badai Bhaskar">
     </div>
-
-    <!-- Webcam used by the AI detection -->
-    <video
-        id="webcam"
-        autoplay
-        playsinline
-        muted
-        style="display: none;">
-    </video>
-
-</main>
+  </main>
 
   <!-- Hidden Camera Stream for Background Processing -->
   <video id="webcam" autoplay playsinline muted style="display: none;">

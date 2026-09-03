@@ -4,13 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
 
     const goatHotspot = document.getElementById("goat-hotspot");
-    const goatSound = new Audio("assets/sounds/goat.mp3");
+const goatSound = document.getElementById("goat-sound");
 
-    goatHotspot.addEventListener("click", () => {
-        goatSound.currentTime = 0;
-        goatSound.play();
-    });
+goatHotspot.addEventListener("click", () => {
+    console.log("🐐 GOAT CLICKED!");
 
+    goatSound.currentTime = 0;
+
+    goatSound.play()
+        .then(() => {
+            console.log("🐐 Goat sound playing!");
+        })
+        .catch((error) => {
+            console.error("❌ Goat audio error:", error);
+        });
+});
   // ======================================
   // ANIMATED BACKGROUND
   // ======================================
