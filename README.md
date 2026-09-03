@@ -2,17 +2,16 @@
 
 
 
-# [Project Name] 🎯
+# Badai Bhaskar 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Dumb and Dumber
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Eza Mariyam Robin - Govt. Model Engineering College
+- Member 2: Navaneetha Rajesh - Govt. Model Engineering College
 
 ### Project Description
 [2-3 lines about what your project does]
@@ -89,9 +88,8 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Eza Mariyam Robin: [Specific contributions]
+- Navaneetha Rajesh: [Specific contributions]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
