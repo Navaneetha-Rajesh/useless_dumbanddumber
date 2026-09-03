@@ -37,6 +37,51 @@ class BhaskarEngine {
     };
 
     // ==========================================
+    // AUDIO ASSETS & MAPPING
+    // ==========================================
+
+    this.currentAudio = null;
+
+    // Direct mapping from text string to its corresponding audio file
+    this.audioMap = {
+      // Tea Sip
+      "Ah... strong tea, like my opinions.": "assets/audio/tea-sip.mp3",
+
+      // Slouching, Sleeping, Good Posture
+      "Nivarnnu irikku mone!": "assets/audio/audio.mp3",
+      "എണീക്ക് മോനേ! ജോലി സമയത്ത് ഉറക്കമോ?!": "assets/audio/audio.mp3",
+      "ഹമ്മ്... കൊള്ളാം. ഇങ്ങനെ തന്നെ ഇരിക്ക്.": "assets/audio/good-posture.mp3",
+
+      // Modal Interactions
+      "Aha! Trying to inspect my secrets?": "assets/audio/modal-inspect.mp3",
+      "Back to keeping an eye on you...": "assets/audio/modal-reset.mp3",
+
+      // Phone Dialogues
+      "എപ്പോ നോക്കിയാലും ഫോൺ തന്നെ!": "assets/audio/phone.mp3",
+      "ഫോൺ ഒന്ന് താഴെ വെച്ചൂടെ?": "assets/audio/phone.mp3",
+      "ഇത്ര നേരം ഫോണിൽ എന്താ?": "assets/audio/phone.mp3",
+      "ഫോൺ തന്നെ ജീവിതമായോ?": "assets/audio/phone.mp3",
+      "വേറെ പണിയൊന്നുമില്ലേ?": "assets/audio/phone.mp3",
+      "ഫോണിൽ നോക്കിയിരുന്നാൽ കാര്യം നടക്കുമോ?": "assets/audio/phone.mp3",
+      "ഞങ്ങളുടെ കാലത്ത് ഫോൺ പോലും ഇല്ലായിരുന്നു!": "assets/audio/phone.mp3",
+      "ഫോൺ ഇല്ലാതെ അഞ്ച് മിനിറ്റ് ഇരുന്ന് നോക്ക്.": "assets/audio/phone.mp3",
+      "ഇതാണോ ഇപ്പോ പ്രധാന ജോലി?": "assets/audio/phone.mp3",
+      "ഹമ്മ്... ഫോൺ തന്നെ.": "assets/audio/phone.mp3",
+
+      // Badai Stories
+      "ഞങ്ങളുടെ കാലത്ത് ഇതൊന്നും ഇല്ലായിരുന്നു!": "assets/audio/story-1.mp3",
+      "ഞങ്ങളുടെ കാലത്ത് ഫോൺ പോലും ഇല്ലായിരുന്നു!": "assets/audio/story-2.mp3",
+      "ഞാൻ നിന്റെ പ്രായത്തിൽ ആയിരുന്നപ്പോൾ...": "assets/audio/story-3.mp3",
+      "ഇപ്പോഴത്തെ പിള്ളേർക്ക് എല്ലാം എളുപ്പമാണ്.": "assets/audio/story-4.mp3",
+      "ഞങ്ങളുടെ കാലത്ത് ഞങ്ങൾ കഷ്ടപ്പെട്ടാണ് വളർന്നത്.": "assets/audio/story-5.mp3",
+      "ഞങ്ങളുടെ കാലത്ത് സമയം വെറുതെ കളയാറില്ലായിരുന്നു.": "assets/audio/story-6.mp3",
+      "കാലം പോയി മോനേ...": "assets/audio/story-7.mp3",
+      "ഞാൻ പറയുന്നത് അനുഭവത്തിൽ നിന്നാണ്.": "assets/audio/story-8.mp3",
+      "ഇതൊക്കെ ഇപ്പോൾ മനസ്സിലാകില്ല.": "assets/audio/story-9.mp3",
+      "പിന്നെ എന്നോട് വന്ന് പറയരുത്.": "assets/audio/story-10.mp3"
+    };
+
+    // ==========================================
     // UNCLE STORIES
     // ==========================================
 
@@ -105,7 +150,7 @@ class BhaskarEngine {
   }
 
   // ==========================================
-  // SPEECH BUBBLE
+  // SPEECH BUBBLE & AUDIO PLAYER
   // ==========================================
 
   speak(text, duration = 4500) {
@@ -116,11 +161,37 @@ class BhaskarEngine {
 
     this.bubble.classList.remove('hidden');
 
+    // Play corresponding audio clip if mapped
+    this.playAudioForText(text);
+
     clearTimeout(this.speechTimeout);
 
     this.speechTimeout = setTimeout(() => {
       this.bubble.classList.add('hidden');
     }, duration);
+  }
+
+  // ==========================================
+  // PLAY AUDIO
+  // ==========================================
+
+  playAudioForText(text) {
+    // Stop any audio currently playing
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
+
+    const audioSrc = this.audioMap[text];
+
+    if (audioSrc) {
+      this.currentAudio = new Audio(audioSrc);
+
+      this.currentAudio.play().catch((err) => {
+        // Handles browser autoplay restrictions gracefully
+        console.warn('Audio playback blocked or failed:', err);
+      });
+    }
   }
 
   // ==========================================
@@ -130,6 +201,12 @@ class BhaskarEngine {
   hideSpeech() {
 
     clearTimeout(this.speechTimeout);
+
+    // Stop audio playback when speech ends
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio.currentTime = 0;
+    }
 
     if (this.bubble) {
       this.bubble.classList.add('hidden');
@@ -541,7 +618,6 @@ class BhaskarEngine {
     }, 2500);
   }
 }
-
 
 // ==========================================
 // CREATE BHASKAR
