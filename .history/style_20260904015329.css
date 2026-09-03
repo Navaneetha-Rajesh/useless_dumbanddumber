@@ -448,19 +448,14 @@ body, html {
 
     z-index: 1000;
 
-    opacity: 0.75;
-
     appearance: none;
     -webkit-appearance: none;
 
-    transition: 
-        transform 0.2s ease,
-        opacity 0.01s ease;
+    transition: transform 0.2s ease;
 }
 
 .mango:hover {
     transform: scale(1.25) rotate(-8deg);
-    opacity: 1;
 }
 
 /* Remove focus rectangle */
@@ -474,22 +469,22 @@ body, html {
 
 #mango-1 {
     left: 5%;
-    top: 10%;
+    top: 9%;
 }
 
 #mango-2 {
-    left: 8.5%;
+    left: 9.5%;
     top: 10%;
 }
 
 #mango-3 {
     left: 3.5%;
-    top: 18%;
+    top: 17%;
 }
 
 #mango-4 {
-    left: 8.5%;
-    top: 21%;
+    left: 8%;
+    top: 20%;
 }
 
 

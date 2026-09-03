@@ -455,7 +455,7 @@ body, html {
 
     transition: 
         transform 0.2s ease,
-        opacity 0.01s ease;
+        opacity 0.2s ease;
 }
 
 .mango:hover {
@@ -478,8 +478,8 @@ body, html {
 }
 
 #mango-2 {
-    left: 8.5%;
-    top: 10%;
+    left: 10%;
+    top: 8%;
 }
 
 #mango-3 {
