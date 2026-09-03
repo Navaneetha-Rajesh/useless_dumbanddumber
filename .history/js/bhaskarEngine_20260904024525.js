@@ -54,7 +54,7 @@ class BhaskarEngine {
 
       // Camera Covered
       "ക്യാമറ മൂടിയിട്ട് എന്താ പരിപാടി മോനേ?":
-      "assets/audio/camera-covered.mp3",
+  "assets/audio/camera-covered.mp3",
 
       // Modal Interactions
       "Aha! Trying to inspect my secrets?": "assets/audio/modal-inspect.mp3",
@@ -524,21 +524,6 @@ class BhaskarEngine {
       3000
     );
   }
-  // ==========================================
-// CAMERA COVERED REACTION
-// ==========================================
-
-reactToCameraCovered() {
-
-  const dialogue =
-    "ക്യാമറ മൂടിയിട്ട് എന്താ പരിപാടി മോനേ?";
-
-  this.react(
-    'confused',
-    dialogue,
-    3500
-  );
-}
 
   // ==========================================
   // RANDOM UNCLE STORY

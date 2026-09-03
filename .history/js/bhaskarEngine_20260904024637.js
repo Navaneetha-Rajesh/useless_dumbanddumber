@@ -524,21 +524,7 @@ class BhaskarEngine {
       3000
     );
   }
-  // ==========================================
-// CAMERA COVERED REACTION
-// ==========================================
-
-reactToCameraCovered() {
-
-  const dialogue =
-    "ക്യാമറ മൂടിയിട്ട് എന്താ പരിപാടി മോനേ?";
-
-  this.react(
-    'confused',
-    dialogue,
-    3500
-  );
-}
+  
 
   // ==========================================
   // RANDOM UNCLE STORY

@@ -1,12 +1,7 @@
 class DetectionEngine {
-
   constructor() {
-
-    this.video =
-      document.getElementById("webcam");
-
-    this.statusTag =
-      document.getElementById("status-tag");
+    this.video = document.getElementById("webcam");
+    this.statusTag = document.getElementById("status-tag");
 
     this.poseDetector = null;
     this.objectDetector = null;
@@ -17,20 +12,15 @@ class DetectionEngine {
     this.isDetecting = false;
   }
 
-
-  // ==========================================
-  // INITIALIZE AI
-  // ==========================================
-
   async init() {
-
     try {
-
       console.log("Starting webcam...");
 
+      // ==========================================
       // TensorFlow
-      if (window.tf) {
+      // ==========================================
 
+      if (window.tf) {
         await tf.setBackend("webgl");
         await tf.ready();
 
@@ -40,21 +30,19 @@ class DetectionEngine {
         );
       }
 
+      // ==========================================
+      // WEBCAM
+      // ==========================================
 
-      // Webcam
       const stream =
-        await navigator.mediaDevices
-          .getUserMedia({
-
-            video: {
-              width: 640,
-              height: 480,
-              facingMode: "user"
-            },
-
-            audio: false
-          });
-
+        await navigator.mediaDevices.getUserMedia({
+          video: {
+            width: 640,
+            height: 480,
+            facingMode: "user"
+          },
+          audio: false
+        });
 
       this.video.srcObject = stream;
 
@@ -64,82 +52,63 @@ class DetectionEngine {
 
       console.log("Video playing");
 
+      // ==========================================
+      // POSE DETECTOR
+      // ==========================================
 
-      // ========================================
-      // MOVE NET
-      // ========================================
-
-      console.log(
-        "Loading pose detector..."
-      );
+      console.log("Loading pose detector...");
 
       this.poseDetector =
         await poseDetection.createDetector(
-
           poseDetection.SupportedModels.MoveNet,
-
           {
             modelType:
-              poseDetection.movenet.modelType
-                .SINGLEPOSE_LIGHTNING
+              poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING
           }
-
         );
 
-      console.log(
-        "Pose detector ready"
-      );
+      console.log("Pose detector ready");
 
+      // ==========================================
+      // OBJECT DETECTOR
+      // ==========================================
 
-      // ========================================
-      // COCO SSD
-      // ========================================
-
-      console.log(
-        "Loading object detector..."
-      );
+      console.log("Loading object detector...");
 
       this.objectDetector =
         await cocoSsd.load();
 
-      console.log(
-        "Object detector ready"
-      );
+      console.log("Object detector ready");
 
+      // ==========================================
+      // START DETECTION
+      // ==========================================
 
       this.isDetecting = true;
 
-      console.log(
-        "Starting detection loop..."
-      );
+      console.log("Starting detection loop...");
 
       this.detectLoop();
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
       console.error(
         "Webcam / AI initialization failed:",
         error
       );
 
-
-      if (
-        error.name === "NotAllowedError"
-      ) {
+      if (error.name === "NotAllowedError") {
 
         alert(
           "Please allow camera access for Badai Bhaskar 😈"
         );
 
-      }
-
-      else {
+      } else {
 
         alert(
           "Could not start the webcam. Check the console."
         );
+
       }
     }
   }
@@ -151,16 +120,11 @@ class DetectionEngine {
 
   checkCameraCovered() {
 
-    const canvas =
-      document.createElement("canvas");
-
-    const ctx =
-      canvas.getContext("2d");
-
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
 
     canvas.width = 80;
     canvas.height = 60;
-
 
     ctx.drawImage(
       this.video,
@@ -170,18 +134,14 @@ class DetectionEngine {
       canvas.height
     );
 
-
-    const frame =
-      ctx.getImageData(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-
+    const frame = ctx.getImageData(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
 
     let totalBrightness = 0;
-
 
     for (
       let i = 0;
@@ -189,30 +149,23 @@ class DetectionEngine {
       i += 4
     ) {
 
-      const r =
-        frame.data[i];
-
-      const g =
-        frame.data[i + 1];
-
-      const b =
-        frame.data[i + 2];
-
+      const r = frame.data[i];
+      const g = frame.data[i + 1];
+      const b = frame.data[i + 2];
 
       totalBrightness +=
         (r + g + b) / 3;
     }
 
-
     const pixelCount =
       frame.data.length / 4;
-
 
     const averageBrightness =
       totalBrightness / pixelCount;
 
-
     // Very dark frame
+    // = camera probably covered
+
     return averageBrightness < 25;
   }
 
@@ -227,10 +180,8 @@ class DetectionEngine {
       return;
     }
 
-
     try {
 
-      // Make sure video has enough data
       if (
         this.video.readyState <
         HTMLMediaElement.HAVE_ENOUGH_DATA
@@ -245,37 +196,34 @@ class DetectionEngine {
       }
 
 
-      // ========================================
-      // CAMERA COVERED
-      // ========================================
+      // ======================================
+      // CAMERA COVER DETECTION
+      // ======================================
 
       const isCameraCovered =
         this.checkCameraCovered();
 
 
-      // ========================================
+      // ======================================
       // POSE DETECTION
-      // ========================================
+      // ======================================
 
       let poses = [];
-
 
       if (this.poseDetector) {
 
         poses =
-          await this.poseDetector
-            .estimatePoses(
-              this.video
-            );
+          await this.poseDetector.estimatePoses(
+            this.video
+          );
       }
 
 
-      // ========================================
-      // OBJECT DETECTION
-      // ========================================
+      // ======================================
+      // PHONE DETECTION
+      // ======================================
 
       let isPhoneDetected = false;
-
 
       if (this.objectDetector) {
 
@@ -284,43 +232,52 @@ class DetectionEngine {
             this.video
           );
 
-
         const phone =
           predictions.find(
             prediction =>
-              prediction.class ===
-                "cell phone" &&
+              prediction.class === "cell phone" &&
               prediction.score > 0.35
           );
 
-
         if (phone) {
-
           isPhoneDetected = true;
         }
       }
 
 
-      // ========================================
-      // DETERMINE STATE
-      // ========================================
+      // ======================================
+      // DETERMINE USER STATE
+      // ======================================
 
       let state = "NORMAL";
 
 
-      // Camera covered gets highest priority
+      // --------------------------------------
+      // CAMERA COVERED
+      // --------------------------------------
+
       if (isCameraCovered) {
 
         state = "CAMERA_COVERED";
+
       }
 
-      // Phone
+
+      // --------------------------------------
+      // PHONE
+      // --------------------------------------
+
       else if (isPhoneDetected) {
 
         state = "PHONE";
+
       }
 
-      // Posture
+
+      // --------------------------------------
+      // POSTURE
+      // --------------------------------------
+
       else if (poses.length > 0) {
 
         const keypoints =
@@ -329,24 +286,21 @@ class DetectionEngine {
 
         const nose =
           keypoints.find(
-            point =>
-              point.name === "nose"
+            point => point.name === "nose"
           );
 
 
         const leftShoulder =
           keypoints.find(
             point =>
-              point.name ===
-                "left_shoulder"
+              point.name === "left_shoulder"
           );
 
 
         const rightShoulder =
           keypoints.find(
             point =>
-              point.name ===
-                "right_shoulder"
+              point.name === "right_shoulder"
           );
 
 
@@ -367,17 +321,19 @@ class DetectionEngine {
             shoulderY - nose.y;
 
 
-          // Sleeping
+          // Head very close to shoulders
           if (distance < 40) {
 
             state = "SLEEPING";
+
           }
 
 
-          // Slouching
+          // Slightly bent
           else if (distance < 75) {
 
             state = "SLOUCHING";
+
           }
 
 
@@ -385,21 +341,22 @@ class DetectionEngine {
           else if (distance >= 90) {
 
             state = "NORMAL";
+
           }
         }
       }
 
 
-      // ========================================
+      // ======================================
       // UPDATE UI
-      // ========================================
+      // ======================================
 
       this.updateStatus(state);
 
 
-      // ========================================
+      // ======================================
       // REACT ONLY WHEN STATE CHANGES
-      // ========================================
+      // ======================================
 
       if (state !== this.lastState) {
 
@@ -408,16 +365,13 @@ class DetectionEngine {
           state
         );
 
-
         this.handleReaction(state);
-
 
         this.lastState = state;
       }
 
-    }
 
-    catch (error) {
+    } catch (error) {
 
       console.error(
         "Detection error:",
@@ -426,7 +380,10 @@ class DetectionEngine {
     }
 
 
-    // Run again after 1 second
+    // ======================================
+    // RUN AGAIN AFTER 1 SECOND
+    // ======================================
+
     setTimeout(
       () => this.detectLoop(),
       1000
@@ -440,11 +397,10 @@ class DetectionEngine {
 
   handleReaction(state) {
 
-    const now =
-      Date.now();
+    // Don't spam Bhaskar
 
+    const now = Date.now();
 
-    // Prevent reactions too frequently
     if (
       now - this.lastReactionTime < 3000
     ) {
@@ -452,11 +408,14 @@ class DetectionEngine {
       return;
     }
 
-
     this.lastReactionTime = now;
 
 
     switch (state) {
+
+      // --------------------------------------
+      // CAMERA COVERED
+      // --------------------------------------
 
       case "CAMERA_COVERED":
 
@@ -465,12 +424,20 @@ class DetectionEngine {
         break;
 
 
+      // --------------------------------------
+      // PHONE
+      // --------------------------------------
+
       case "PHONE":
 
         bhaskar.reactToPhoneUse();
 
         break;
 
+
+      // --------------------------------------
+      // SLOUCHING
+      // --------------------------------------
 
       case "SLOUCHING":
 
@@ -479,12 +446,20 @@ class DetectionEngine {
         break;
 
 
+      // --------------------------------------
+      // SLEEPING
+      // --------------------------------------
+
       case "SLEEPING":
 
         bhaskar.reactToSleeping();
 
         break;
 
+
+      // --------------------------------------
+      // NORMAL
+      // --------------------------------------
 
       case "NORMAL":
 
@@ -506,63 +481,75 @@ class DetectionEngine {
     }
 
 
-    // Camera covered
-    if (
-      state === "CAMERA_COVERED"
-    ) {
+    // --------------------------------------
+    // CAMERA COVERED
+    // --------------------------------------
+
+    if (state === "CAMERA_COVERED") {
 
       this.statusTag.innerText =
         "📷 Camera Covered";
 
-      this.statusTag.classList
-        .remove("hidden");
+      this.statusTag.classList.remove(
+        "hidden"
+      );
     }
 
 
-    // Phone
-    else if (
-      state === "PHONE"
-    ) {
+    // --------------------------------------
+    // PHONE
+    // --------------------------------------
+
+    else if (state === "PHONE") {
 
       this.statusTag.innerText =
         "📱 Phone Detected";
 
-      this.statusTag.classList
-        .remove("hidden");
+      this.statusTag.classList.remove(
+        "hidden"
+      );
     }
 
 
-    // Slouching
-    else if (
-      state === "SLOUCHING"
-    ) {
+    // --------------------------------------
+    // SLOUCHING
+    // --------------------------------------
+
+    else if (state === "SLOUCHING") {
 
       this.statusTag.innerText =
         "🪑 Bad Posture Detected";
 
-      this.statusTag.classList
-        .remove("hidden");
+      this.statusTag.classList.remove(
+        "hidden"
+      );
     }
 
 
-    // Sleeping
-    else if (
-      state === "SLEEPING"
-    ) {
+    // --------------------------------------
+    // SLEEPING
+    // --------------------------------------
+
+    else if (state === "SLEEPING") {
 
       this.statusTag.innerText =
         "😴 Sleeping Detected";
 
-      this.statusTag.classList
-        .remove("hidden");
+      this.statusTag.classList.remove(
+        "hidden"
+      );
     }
 
 
-    // Normal
+    // --------------------------------------
+    // NORMAL
+    // --------------------------------------
+
     else {
 
-      this.statusTag.classList
-        .add("hidden");
+      this.statusTag.classList.add(
+        "hidden"
+      );
     }
   }
 }
