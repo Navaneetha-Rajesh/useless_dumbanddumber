@@ -323,10 +323,7 @@ if (this.objectDetector) {
 
         state = "CAMERA_COVERED";
       }
-      //bottle
-      else if(isBottleDetected){
-        state = "BOTTLE";
-      }
+
       // Phone
       else if (isPhoneDetected) {
 
@@ -483,11 +480,7 @@ if (this.objectDetector) {
         bhaskar.reactToPhoneUse();
 
         break;
-      case "BOTTLE":
 
-      bhaskar.reactToBottle();
-
-      break;
 
       case "SLOUCHING":
 
@@ -535,16 +528,7 @@ if (this.objectDetector) {
         .remove("hidden");
     }
 
-    //bottle
-    else if (state === "BOTTLE") {
 
-  this.statusTag.innerText =
-    "💧 Water Bottle Detected";
-
-  this.statusTag.classList.remove(
-    "hidden"
-  );
-}
     // Phone
     else if (
       state === "PHONE"

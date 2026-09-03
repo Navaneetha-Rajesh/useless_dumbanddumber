@@ -535,16 +535,7 @@ if (this.objectDetector) {
         .remove("hidden");
     }
 
-    //bottle
-    else if (state === "BOTTLE") {
 
-  this.statusTag.innerText =
-    "💧 Water Bottle Detected";
-
-  this.statusTag.classList.remove(
-    "hidden"
-  );
-}
     // Phone
     else if (
       state === "PHONE"
