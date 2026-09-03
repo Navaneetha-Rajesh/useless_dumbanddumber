@@ -1,36 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ======================================
-  // ANIMATED BACKGROUND
-  // ======================================
-
-  const backgroundFrames = [
-    "assets/background/1.png",
-    "assets/background/2.png",
-    "assets/background/3.png",
-    "assets/background/4.png"
-  ];
-
-  let backgroundIndex = 0;
-
-  // Preload all background images
-  backgroundFrames.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
-
-  // Change background every 1 second
-  setInterval(() => {
-
-    backgroundIndex =
-      (backgroundIndex + 1) % backgroundFrames.length;
-
-    document.body.style.backgroundImage =
-      `url("${backgroundFrames[backgroundIndex]}")`;
-
-  }, 1000);
-
-
   const logo =
     document.getElementById("logo");
 

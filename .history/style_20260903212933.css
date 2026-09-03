@@ -9,12 +9,9 @@ body, html {
   height: 100%;
   overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  /* Animated background */
-  background-image: url('assets/background/1.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
+  
+  /* Background Image Setup */
+  background: url('assets/background.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 

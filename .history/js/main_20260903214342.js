@@ -31,6 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 1000);
 
 
+  // ======================================
+  // YOUR EXISTING CODE
+  // ======================================
+
+  const logo =
+    document.getElementById("logo");
+
+  // ...rest of your existing code
+});
   const logo =
     document.getElementById("logo");
 
