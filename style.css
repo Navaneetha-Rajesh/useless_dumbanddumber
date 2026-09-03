@@ -518,3 +518,35 @@ body, html {
 .mango.playing {
     animation: mangoBounce 0.5s ease;
 }
+
+.coconut {
+    position: absolute;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 20px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 1000;
+
+    opacity: 0.75;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    transition: 
+        transform 0.2s ease,
+        opacity 0.01s ease;
+}
+
+#coconut{
+    left: 90%;
+    top: 65%;
+}

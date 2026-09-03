@@ -19,14 +19,16 @@ const mangoStories = [
   new Audio("assets/audio/badai-1.mp3"),
   new Audio("assets/audio/badai-2.mp3"),
   new Audio("assets/audio/badai-3.mp3"),
-  new Audio("assets/audio/badai-4.mp3")
+  new Audio("assets/audio/badai-4.mp3"),
+  new Audio("assets/audio/gangey.mp3")
 ];
 
 const mangoButtons = [
   document.getElementById("mango-1"),
   document.getElementById("mango-2"),
   document.getElementById("mango-3"),
-  document.getElementById("mango-4")
+  document.getElementById("mango-4"),
+  document.getElementById("coconut")  // Added coconut button
 ];
 
 mangoButtons.forEach((mango, index) => {
