@@ -28,11 +28,7 @@ class DetectionEngine {
 
       console.log("Starting webcam...");
 
-
-      // ========================================
-      // TENSORFLOW
-      // ========================================
-
+      // TensorFlow
       if (window.tf) {
 
         await tf.setBackend("webgl");
@@ -45,10 +41,7 @@ class DetectionEngine {
       }
 
 
-      // ========================================
-      // WEBCAM
-      // ========================================
-
+      // Webcam
       const stream =
         await navigator.mediaDevices
           .getUserMedia({
@@ -114,10 +107,6 @@ class DetectionEngine {
       );
 
 
-      // ========================================
-      // START DETECTION
-      // ========================================
-
       this.isDetecting = true;
 
       console.log(
@@ -127,7 +116,6 @@ class DetectionEngine {
       this.detectLoop();
 
     }
-
 
     catch (error) {
 
@@ -152,7 +140,6 @@ class DetectionEngine {
         alert(
           "Could not start the webcam. Check the console."
         );
-
       }
     }
   }
@@ -243,10 +230,7 @@ class DetectionEngine {
 
     try {
 
-      // ========================================
-      // CHECK VIDEO
-      // ========================================
-
+      // Make sure video has enough data
       if (
         this.video.readyState <
         HTMLMediaElement.HAVE_ENOUGH_DATA
@@ -268,97 +252,63 @@ class DetectionEngine {
       const isCameraCovered =
         this.checkCameraCovered();
 
+      // ========================================
+  // TWO PEOPLE DETECTION
+  // ========================================
+
+  const people =
+    predictions.filter(
+      prediction =>
+        prediction.class === "person" &&
+        prediction.score > 0.50
+    );
+
+  areTwoPeopleDetected =
+    people.length >= 2;
+
+     
 
       // ========================================
-      // POSE DETECTION
-      // ========================================
+// OBJECT DETECTION
+// ========================================
 
-      let poses = [];
+let isPhoneDetected = false;
+let isBottleDetected = false;
+let areTwoPeopleDetected = false;
 
+if (this.objectDetector) {
 
-      if (this.poseDetector) {
+  const predictions =
+    await this.objectDetector.detect(
+      this.video
+    );
 
-        poses =
-          await this.poseDetector
-            .estimatePoses(
-              this.video
-            );
-      }
+  // Phone detection
+  const phone =
+    predictions.find(
+      prediction =>
+        prediction.class === "cell phone" &&
+        prediction.score > 0.35
+    );
 
-
-      // ========================================
-      // OBJECT DETECTION
-      // ========================================
-
-      let isPhoneDetected = false;
-
-      let isBottleDetected = false;
-
-      let areTwoPeopleDetected = false;
-
-
-      if (this.objectDetector) {
-
-        const predictions =
-          await this.objectDetector.detect(
-            this.video
-          );
+  if (phone) {
+    isPhoneDetected = true;
+  }
 
 
-        // ======================================
-        // PHONE DETECTION
-        // ======================================
+  // Water bottle detection
+  const bottle =
+    predictions.find(
+      prediction =>
+        prediction.class === "bottle" &&
+        prediction.score > 0.40
+    );
 
-        const phone =
-          predictions.find(
-            prediction =>
-              prediction.class ===
-                "cell phone" &&
-              prediction.score > 0.35
-          );
+  if (bottle) {
+    isBottleDetected = true;
+  }
+}
 
-
-        if (phone) {
-
-          isPhoneDetected = true;
-        }
-
-
-        // ======================================
-        // BOTTLE DETECTION
-        // ======================================
-
-        const bottle =
-          predictions.find(
-            prediction =>
-              prediction.class ===
-                "bottle" &&
-              prediction.score > 0.40
-          );
-
-
-        if (bottle) {
-
-          isBottleDetected = true;
-        }
-
-
-        // ======================================
-        // TWO PEOPLE DETECTION
-        // ======================================
-
-        const people =
-          predictions.filter(
-            prediction =>
-              prediction.class ===
-                "person" &&
-              prediction.score > 0.50
-          );
-
-
-        areTwoPeopleDetected =
-          people.length >= 2;
-      }
 
 
       // ========================================
@@ -368,50 +318,22 @@ class DetectionEngine {
       let state = "NORMAL";
 
 
-      // ========================================
-      // CAMERA COVERED
-      // ========================================
-
+      // Camera covered gets highest priority
       if (isCameraCovered) {
 
         state = "CAMERA_COVERED";
       }
-
-
-      // ========================================
-      // TWO PEOPLE
-      // ========================================
-
-      else if (areTwoPeopleDetected) {
-
-        state = "TWO_PEOPLE";
-      }
-
-
-      // ========================================
-      // BOTTLE
-      // ========================================
-
-      else if (isBottleDetected) {
-
+      //bottle
+      else if(isBottleDetected){
         state = "BOTTLE";
       }
-
-
-      // ========================================
-      // PHONE
-      // ========================================
-
+      // Phone
       else if (isPhoneDetected) {
 
         state = "PHONE";
       }
 
-
-      // ========================================
-      // POSTURE
-      // ========================================
-
+      // Posture
       else if (poses.length > 0) {
 
         const keypoints =
@@ -482,7 +404,7 @@ class DetectionEngine {
 
 
       // ========================================
-      // UPDATE STATUS
+      // UPDATE UI
       // ========================================
 
       this.updateStatus(state);
@@ -492,9 +414,7 @@ class DetectionEngine {
       // REACT ONLY WHEN STATE CHANGES
       // ========================================
 
-      if (
-        state !== this.lastState
-      ) {
+      if (state !== this.lastState) {
 
         console.log(
           "Bhaskar detected:",
@@ -505,12 +425,10 @@ class DetectionEngine {
         this.handleReaction(state);
 
 
-        this.lastState =
-          state;
+        this.lastState = state;
       }
 
     }
-
 
     catch (error) {
 
@@ -521,10 +439,7 @@ class DetectionEngine {
     }
 
 
-    // ========================================
-    // RUN AGAIN
-    // ========================================
-
+    // Run again after 1 second
     setTimeout(
       () => this.detectLoop(),
       1000
@@ -551,14 +466,11 @@ class DetectionEngine {
     }
 
 
-    this.lastReactionTime =
-      now;
+    this.lastReactionTime = now;
 
 
     switch (state) {
 
-
-      // CAMERA COVERED
       case "CAMERA_COVERED":
 
         bhaskar.reactToCameraCovered();
@@ -566,31 +478,17 @@ class DetectionEngine {
         break;
 
 
-      // TWO PEOPLE
-      case "TWO_PEOPLE":
-
-        bhaskar.reactToTwoPeople();
-
-        break;
-
-
-      // BOTTLE
-      case "BOTTLE":
-
-        bhaskar.reactToBottle();
-
-        break;
-
-
-      // PHONE
       case "PHONE":
 
         bhaskar.reactToPhoneUse();
 
         break;
+      case "BOTTLE":
 
+      bhaskar.reactToBottle();
 
-      // SLOUCHING
+      break;
+
       case "SLOUCHING":
 
         bhaskar.reactToSlouching();
@@ -598,7 +496,6 @@ class DetectionEngine {
         break;
 
 
-      // SLEEPING
       case "SLEEPING":
 
         bhaskar.reactToSleeping();
@@ -606,7 +503,6 @@ class DetectionEngine {
         break;
 
 
-      // NORMAL
       case "NORMAL":
 
         bhaskar.reactToGoodPosture();
@@ -627,10 +523,7 @@ class DetectionEngine {
     }
 
 
-    // ========================================
-    // CAMERA COVERED
-    // ========================================
-
+    // Camera covered
     if (
       state === "CAMERA_COVERED"
     ) {
@@ -642,43 +535,17 @@ class DetectionEngine {
         .remove("hidden");
     }
 
+    //bottle
+    else if (state === "BOTTLE") {
 
-    // ========================================
-    // TWO PEOPLE
-    // ========================================
+  this.statusTag.innerText =
+    "💧 Water Bottle Detected";
 
-    else if (
-      state === "TWO_PEOPLE"
-    ) {
-
-      this.statusTag.innerText =
-        "👀 Two People Detected";
-
-      this.statusTag.classList
-        .remove("hidden");
-    }
-
-
-    // ========================================
-    // BOTTLE
-    // ========================================
-
-    else if (
-      state === "BOTTLE"
-    ) {
-
-      this.statusTag.innerText =
-        "💧 Water Bottle Detected";
-
-      this.statusTag.classList
-        .remove("hidden");
-    }
-
-
-    // ========================================
-    // PHONE
-    // ========================================
-
+  this.statusTag.classList.remove(
+    "hidden"
+  );
+}
+    // Phone
     else if (
       state === "PHONE"
     ) {
@@ -691,10 +558,7 @@ class DetectionEngine {
     }
 
 
-    // ========================================
-    // SLOUCHING
-    // ========================================
-
+    // Slouching
     else if (
       state === "SLOUCHING"
     ) {
@@ -707,10 +571,7 @@ class DetectionEngine {
     }
 
 
-    // ========================================
-    // SLEEPING
-    // ========================================
-
+    // Sleeping
     else if (
       state === "SLEEPING"
     ) {
@@ -723,10 +584,7 @@ class DetectionEngine {
     }
 
 
-    // ========================================
-    // NORMAL
-    // ========================================
-
+    // Normal
     else {
 
       this.statusTag.classList
