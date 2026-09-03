@@ -53,8 +53,8 @@ class BhaskarEngine {
       "Ha! Angane venam irikkan!": "assets/audio/Anganevenam.mp3",
 
       // Camera Covered
-      "ക്യാമറ മൂടിയിട്ട് എന്താ പരിപാടി മോനേ?":
-      "assets/audio/camera-covered.mp3",
+      "Camera moodiyittu entha ppd?": "assets/audio/Camera-1.mp3",
+"Kooii!! Evde poi??": "assets/audio/Camera-2.mp3",
 
       // Modal Interactions
       "Aha! Trying to inspect my secrets?": "assets/audio/modal-inspect.mp3",
@@ -67,6 +67,14 @@ class BhaskarEngine {
       "Itha ee pillerde kuzhappam, eppol nokkiyalum phoneila": "assets/audio/Eppazhumphone.mp3",
       "Ee phone thoondi thoondi maduthille??": "assets/audio/Maduthille.mp3",
       "Phone illathe oru anju minute irunnu nokku!": "assets/audio/5min.mp3",
+
+      //Two People Reaction
+      "Oo randalum undallo!": "assets/audio/2aalum.mp3",
+"Randu perum koode companyadi aano?": "assets/audio/Company.mp3",
+
+// Water Bottle Reaction
+"Vellom kudikkan ithra valiya plastic kuppi venaminnilla, pandokke njangal kinatil ninnu koori kudicha jeeviche": "assets/audio/Kinar.mp3",
+"Aa kuppi nirachu vechal mathram pora, kudikkayum venam.": "assets/audio/Kupinirachu.mp3"
     };
 
     // ==========================================
@@ -498,8 +506,12 @@ class BhaskarEngine {
 
 reactToCameraCovered() {
 
-  const dialogue =
-    "ക്യാമറ മൂടിയിട്ട് എന്താ പരിപാടി മോനേ?";
+  const dialogue =[
+    "Camera moodiyittu entha ppd?",
+"Kooii!! Evde poi??"].Math.floor(
+    Math.random() *
+    2
+  );
 
   this.react(
     'confused',
@@ -514,16 +526,8 @@ reactToCameraCovered() {
 reactToBottle() {
 
   const dialogues = [
-
-    "വെള്ളം കുടിക്കാനെങ്കിലും ഓർമ്മയുണ്ടല്ലേ മോനേ? 💧",
-
-    "ആഹാ... വെള്ളം കുടിക്കുന്നുണ്ട്! കൊള്ളാം.",
-
-    "വെള്ളം കുടിക്ക് മോനേ... അതാണ് നല്ലത്.",
-
-    "ഇതെങ്കിലും നല്ല ശീലം ആണല്ലോ.",
-
-    "വെള്ളം കുടിച്ചിട്ട് പഠിക്കെടാ മോനേ!"
+    "Vellom kudikkan ithra valiya plastic kuppi venaminnilla, pandokke njangal kinatil ninnu koori kudicha jeeviche",
+"Aa kuppi nirachu vechal mathram pora, kudikkayum venam."
   ];
 
 
@@ -548,18 +552,8 @@ reactToBottle() {
 
 reactToTwoPeople() {
 
-  const dialogues = [
-
-    "ആഹാ... രണ്ടുപേരും കൂടിയാണല്ലേ? എന്താ പരിപാടി? 😏",
-
-    "രണ്ടുപേരും കൂടി എന്തോ പ്ലാൻ ചെയ്യുന്നുണ്ടല്ലോ! 👀",
-
-    "ഞാൻ ഇവിടെ ഇരിക്കുമ്പോഴാണോ രഹസ്യ മീറ്റിംഗ്?",
-
-    "ആഹാ... company ആയല്ലേ മോനേ!",
-
-    "രണ്ടുപേർ വന്നപ്പോൾ Ammavane മറന്നോ? 😌"
-
+  const dialogues = ["Oo randalum undallo!",
+"Randu perum koode companyadi aano?"
   ];
 
 
