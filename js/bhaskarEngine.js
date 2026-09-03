@@ -45,26 +45,25 @@ class BhaskarEngine {
     // Direct mapping from text string to its corresponding audio file
     this.audioMap = {
       // Tea Sip
-      "Ah... strong tea, like my opinions.": "assets/audio/tea-sip.mp3",
+      "Ah... strong tea, like my opinions.": "assets/audio/strongtea.mp3",
 
       // Slouching, Sleeping, Good Posture
-      "Ahhh!!! Kuninju koodi irikaathe nivarnnu iri angoodu": "assets/audio/audio.mp3",
-      "എണീക്ക് മോനേ! ജോലി സമയത്ത് ഉറക്കമോ?!": "assets/audio/audio.mp3",
-      "ഹമ്മ്... കൊള്ളാം. ഇങ്ങനെ തന്നെ ഇരിക്ക്.": "assets/audio/good-posture.mp3",
+      "Ahhh!!! Kuninju koodi irikaathe nivarnnu iri angoodu": "assets/audio/slouching.mp3",
+      "Hoo eppol nokkiyalum urakkam thanne urakkam!": "assets/audio/urakkam.mp3",
+      "Ha! Angane venam irikkan!": "assets/audio/Anganevenam.mp3",
 
       // Modal Interactions
       "Aha! Trying to inspect my secrets?": "assets/audio/modal-inspect.mp3",
       "Back to keeping an eye on you...": "assets/audio/modal-reset.mp3",
 
       // Phone Dialogues
-      "എപ്പോ നോക്കിയാലും ഫോൺ തന്നെ!": "assets/audio/phone.mp3",
-      "ഫോൺ ഒന്ന് താഴെ വെച്ചൂടെ?": "assets/audio/phone.mp3",
-      "ഇത്ര നേരം ഫോണിൽ എന്താ?": "assets/audio/phone.mp3",
-      "ഫോൺ തന്നെ ജീവിതമായോ?": "assets/audio/phone.mp3",
-      "വേറെ പണിയൊന്നുമില്ലേ?": "assets/audio/phone.mp3",
-      "ഫോണിൽ നോക്കിയിരുന്നാൽ കാര്യം നടക്കുമോ?": "assets/audio/phone.mp3",
-      "ഞങ്ങളുടെ കാലത്ത് ഫോൺ പോലും ഇല്ലായിരുന്നു!": "assets/audio/phone.mp3",
-      "ഫോൺ ഇല്ലാതെ അഞ്ച് മിനിറ്റ് ഇരുന്ന് നോക്ക്.": "assets/audio/phone.mp3",
+      "24 manikoorum phone il kayari irunnal kannu adichu pokum makkale!": "assets/audio/kannu.mp3",
+      "Enna aa phone nte akathottu kayari iri!": "assets/audio/Akathottu.mp3",
+      "Aaroda ee phoni kathi vekkunne??": "assets/audio/Aaroda.mp3",
+      "Itha ee pillerde kuzhappam, eppol nokkiyalum phoneila": "assets/audio/Eppazhumphone.mp3",
+      "Ee phone thoondi thoondi maduthille??": "assets/audio/Maduthille.mp3",
+      "Phone illathe oru anju minute irunnu nokku!": "assets/audio/5min.mp3",
+
       "ഇതാണോ ഇപ്പോ പ്രധാന ജോലി?": "assets/audio/phone.mp3",
       "ഹമ്മ്... ഫോൺ തന്നെ.": "assets/audio/phone.mp3",
 
@@ -103,16 +102,12 @@ class BhaskarEngine {
     // ==========================================
 
     this.phoneDialogues = [
-      "എപ്പോ നോക്കിയാലും ഫോൺ തന്നെ!",
-      "ഫോൺ ഒന്ന് താഴെ വെച്ചൂടെ?",
-      "ഇത്ര നേരം ഫോണിൽ എന്താ?",
-      "ഫോൺ തന്നെ ജീവിതമായോ?",
-      "വേറെ പണിയൊന്നുമില്ലേ?",
-      "ഫോണിൽ നോക്കിയിരുന്നാൽ കാര്യം നടക്കുമോ?",
-      "ഞങ്ങളുടെ കാലത്ത് ഫോൺ പോലും ഇല്ലായിരുന്നു!",
-      "ഫോൺ ഇല്ലാതെ അഞ്ച് മിനിറ്റ് ഇരുന്ന് നോക്ക്.",
-      "ഇതാണോ ഇപ്പോ പ്രധാന ജോലി?",
-      "ഹമ്മ്... ഫോൺ തന്നെ."
+      "24 manikoorum phone il kayari irunnal kannu adichu pokum makkale!",
+      "Enna aa phone nte akathottu kayari iri!",
+      "Aaroda ee phoni kathi vekkunne??",
+      "Itha ee pillerde kuzhappam, eppol nokkiyalum phoneila",
+      "Ee phone thoondi thoondi maduthille??",
+      "Phone illathe oru anju minute irunnu nokku!"
     ];
 
     // ==========================================
