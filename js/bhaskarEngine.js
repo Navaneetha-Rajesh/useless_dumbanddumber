@@ -462,7 +462,7 @@ class BhaskarEngine {
 
     this.react(
       'angry',
-      'നിവർന്ന് ഇരിക്ക് മോനേ! 😒',
+      "Ahhh!!! Kuninju koodi irikaathe nivarnnu iri angoodu",
       3500
     );
   }
@@ -475,7 +475,7 @@ class BhaskarEngine {
 
     this.react(
       'angry2',
-      'എണീക്ക് മോനേ! ജോലി സമയത്ത് ഉറക്കമോ?!',
+      "Hoo eppol nokkiyalum urakkam thanne urakkam!",
       4000
     );
   }
@@ -488,8 +488,8 @@ class BhaskarEngine {
 
     this.react(
       'approve',
-      'ഹമ്മ്... കൊള്ളാം. ഇങ്ങനെ തന്നെ ഇരിക്ക്.',
-      3000
+      "Ha! Angane venam irikkan!",
+      3500
     );
   }
   // ==========================================
