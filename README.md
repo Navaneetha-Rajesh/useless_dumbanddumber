@@ -217,7 +217,7 @@ Each mango plays a different story, so you never know what nonsense you're going
 - 🤷 Completely unnecessary drama.
 - ✅ Essential neighbourhood realism.
 
-##Secret Flower Icon 
+## Secret Flower Icon 
 
 Disguised as an innocent, decorative blossom floating subtly in the stage, this small flower icon serves as an Easter egg. When clicked, it unlocks a confidential file on Ammavan—exposing his unverified claim to fame, secret "ഞങ്ങളുടെ കാലത്ത്" archives, and classified yapping stats before he catches you snooping.
 
