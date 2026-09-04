@@ -239,20 +239,14 @@ Disguised as an innocent, decorative blossom floating subtly in the stage, this 
 - **VS Code** – Development
 
 ---
-
 #Implementation
 For Software:
-
 ## Installation
 None
-
 ## Run
 Open index.html
-
 #Project Documentation
 For Software:
-
-
 ## Screenshots (Add at least 3)
 ![Logo](/ss/Screenshot2.jpeg)
 *Logo for the Website*
@@ -274,7 +268,6 @@ For Software:
 
 ![Two Person Detection](/ss/Screenshot7.jpeg)
 *Detects when two people are visible on the camera*
-
 
 # Diagrams
 ```text
@@ -328,10 +321,8 @@ For Software:
 ```
 
 # Project Demo
-
 ## Video
-![Drive Link to Demo Video](https://drive.google.com/file/d/107riMPpcBLTECm1AmVl7lQDmIS5TO7KG/view?usp=sharing)
-
+[![Watch Demo Video](https://img.shields.com/badge/Watch_Demo-Google_Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/107riMPpcBLTECm1AmVl7lQDmIS5TO7KG/view?usp=sharing)
 ## Team Contributions
 - Eza Mariyam Robin: UI Designing
 - Navaneetha Rajesh: Frontend
