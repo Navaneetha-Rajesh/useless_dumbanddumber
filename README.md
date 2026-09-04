@@ -228,26 +228,6 @@ Each mango plays a different story, so you never know what nonsense you're going
 - **Git & GitHub** – Version control and collaboration
 - **VS Code** – Development
 
-The application runs completely in the browser.
-
-The webcam feed is processed using **TensorFlow.js**.
-
-**MoveNet** is used to estimate the user's body pose and analyse posture, while **COCO-SSD** identifies objects such as mobile phones and bottles and detects the number of people present in the frame.
-
-The application also analyses the camera feed to detect when the camera appears to be covered.
-
-Based on the detected state, Ammavan changes his expression, displays Malayalam dialogue, plays the corresponding audio reaction, and reacts accordingly.
-
-The application also contains hidden interactive elements scattered throughout the background:
-
-* A clickable hotspot over the **aadu (ആട്)** lets you interact with the goat, triggering an HTML5 audio element that plays an authentic goat sound.
-
-
-* A hidden **mango (🥭)** hotspot in the tree canopy triggers Ammavan's storytelling mode alongside pre-saved Badai audio tracks.
-
-
-* A secret **coconut (🥥)** hotspot nestled near the foliage triggers the iconic **"ഗാംഗേയ്...!"** audio reaction, sending Ammavan into an instant state of flabbergasted shock.
-
 ### For Hardware:
 
 No special hardware required.
@@ -275,23 +255,29 @@ For Software:
 
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Logo]](/ss/Screenshot2.jpeg)
+*Logo for the Website*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Slouching Detection](/ss/Screenshot1.jpeg)
+*Detects when a person slouches and scolds them*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![WaterBottle Detection](/ss/Screenshot3.jpeg)
+*Detects water bottle and comments on it*
+
+![Personal File](/ss/Screenshot4.jpeg)
+*Confidential File of Ammavan*
+
+![About](/ss/Screenshot5.jpeg)
+*About File*
+
+![Phone Detection](/ss/Screenshot6.jpeg)
+*Detects phone and comments on it*
+
+![Two Person Detection](/ss/Screenshot7.jpeg)
+*Detects when two people are visible on the camera*
+
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
----
-
-## Detection Flow
-
 ```text
                         📷 Webcam
                             │
@@ -341,9 +327,34 @@ For Software:
                   🗣️ Malayalam
                     Commentary
 
-                    ### Project Demo
+                    
+
+The application runs completely in the browser.
+
+The webcam feed is processed using **TensorFlow.js**.
+
+**MoveNet** is used to estimate the user's body pose and analyse posture, while **COCO-SSD** identifies objects such as mobile phones and bottles and detects the number of people present in the frame.
+
+The application also analyses the camera feed to detect when the camera appears to be covered.
+
+Based on the detected state, Ammavan changes his expression, displays Malayalam dialogue, plays the corresponding audio reaction, and reacts accordingly.
+
+The application also contains hidden interactive elements scattered throughout the background:
+
+* A clickable hotspot over the **aadu (ആട്)** lets you interact with the goat, triggering an HTML5 audio element that plays an authentic goat sound.
+
+
+* A hidden **mango (🥭)** hotspot in the tree canopy triggers Ammavan's storytelling mode alongside pre-saved Badai audio tracks.
+
+
+* A secret **coconut (🥥)** hotspot nestled near the foliage triggers the iconic **"ഗാംഗേയ്...!"** audio reaction, sending Ammavan into an instant state of flabbergasted shock.
+
+* A confidential file of Ammavan revealing his story, that can be accessed through the 🌸 (flower) icon.
+
+### Project Demo
+
 # Video
-[Add your demo video link here]
+[Drive Link to Demo Video](https://drive.google.com/file/d/107riMPpcBLTECm1AmVl7lQDmIS5TO7KG/view?usp=sharing)
 *Explain what the video demonstrates*
 
 # Additional Demos
