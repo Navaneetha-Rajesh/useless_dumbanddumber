@@ -17,7 +17,7 @@
 
 ## Project Description
 
-**Ayalathe Ammavan** is an AI-powered virtual uncle who sits on your screen and does what every neighbourhood uncle does best — **watch, judge, and give completely unsolicited advice.**
+**Ayalathe Ammavan** is a virtual uncle who sits on your screen and does what every neighbourhood uncle does best — **watch, judge, and give completely unsolicited advice.**
 
 Using your webcam and computer vision, Ammavan keeps an eye on your posture, phone usage, sleeping, water bottle, and even notices when someone else enters the room.
 
