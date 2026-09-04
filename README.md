@@ -29,6 +29,12 @@ Click the goat and it responds with an actual goat sound.
 
 Because apparently, even the goat has something to say.
 
+A hidden **mango (🥭)** hotspot in the tree canopy triggers Ammavan's storytelling mode alongside pre-saved Badai audio tracks.
+
+A secret **coconut (🥥)** hotspot nestled near the foliage triggers the iconic **"ഗാംഗേയ്...!"** audio reaction, sending Ammavan into an instant state of flabbergasted shock.
+
+A confidential file of Ammavan revealing his story, that can be accessed through the 🌸 (flower) icon.
+
 ---
 
 ## The Problem (that doesn't exist)
@@ -99,7 +105,7 @@ Ammavan also randomly walks around the screen, tells stories about **"ഞങ്�
 
 ---
 
-## 🧠 AI Detection Features
+## 🧠 Detection Features
 
 ### 📱 Phone Detection
 
@@ -211,6 +217,10 @@ Each mango plays a different story, so you never know what nonsense you're going
 - 🤷 Completely unnecessary drama.
 - ✅ Essential neighbourhood realism.
 
+##Secret Flower Icon 
+
+Disguised as an innocent, decorative blossom floating subtly in the stage, this small flower icon serves as an Easter egg. When clicked, it unlocks a confidential file on Ammavan—exposing his unverified claim to fame, secret "ഞങ്ങളുടെ കാലത്ത്" archives, and classified yapping stats before he catches you snooping.
+
 # Technical Details
 
 ## Technologies/Components Used
@@ -228,34 +238,23 @@ Each mango plays a different story, so you never know what nonsense you're going
 - **Git & GitHub** – Version control and collaboration
 - **VS Code** – Development
 
-### For Hardware:
-
-No special hardware required.
-
-All you need is:
-
-- 💻 A laptop/desktop
-- 📷 A webcam
-- 🌐 A modern web browser
-- 🔊 Working speakers/headphones
-- ☕ Enough patience to deal with Ammavan
-
 ---
 
-### Implementation
+#Implementation
 For Software:
-# Installation
+
+## Installation
 None
 
-# Run
+## Run
 Open index.html
 
-### Project Documentation
+#Project Documentation
 For Software:
 
 
-# Screenshots (Add at least 3)
-![Logo]](/ss/Screenshot2.jpeg)
+## Screenshots (Add at least 3)
+![Logo](/ss/Screenshot2.jpeg)
 *Logo for the Website*
 
 ![Slouching Detection](/ss/Screenshot1.jpeg)
@@ -326,39 +325,12 @@ For Software:
                          ▼
                   🗣️ Malayalam
                     Commentary
+```
 
-                    
+# Project Demo
 
-The application runs completely in the browser.
-
-The webcam feed is processed using **TensorFlow.js**.
-
-**MoveNet** is used to estimate the user's body pose and analyse posture, while **COCO-SSD** identifies objects such as mobile phones and bottles and detects the number of people present in the frame.
-
-The application also analyses the camera feed to detect when the camera appears to be covered.
-
-Based on the detected state, Ammavan changes his expression, displays Malayalam dialogue, plays the corresponding audio reaction, and reacts accordingly.
-
-The application also contains hidden interactive elements scattered throughout the background:
-
-* A clickable hotspot over the **aadu (ആട്)** lets you interact with the goat, triggering an HTML5 audio element that plays an authentic goat sound.
-
-
-* A hidden **mango (🥭)** hotspot in the tree canopy triggers Ammavan's storytelling mode alongside pre-saved Badai audio tracks.
-
-
-* A secret **coconut (🥥)** hotspot nestled near the foliage triggers the iconic **"ഗാംഗേയ്...!"** audio reaction, sending Ammavan into an instant state of flabbergasted shock.
-
-* A confidential file of Ammavan revealing his story, that can be accessed through the 🌸 (flower) icon.
-
-### Project Demo
-
-# Video
-[Drive Link to Demo Video](https://drive.google.com/file/d/107riMPpcBLTECm1AmVl7lQDmIS5TO7KG/view?usp=sharing)
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
+## Video
+![Drive Link to Demo Video](https://drive.google.com/file/d/107riMPpcBLTECm1AmVl7lQDmIS5TO7KG/view?usp=sharing)
 
 ## Team Contributions
 - Eza Mariyam Robin: UI Designing
