@@ -239,7 +239,7 @@ Disguised as an innocent, decorative blossom floating subtly in the stage, this 
 - **VS Code** – Development
 
 ---
-#Implementation
+# Implementation
 For Software:
 ## Installation
 None
