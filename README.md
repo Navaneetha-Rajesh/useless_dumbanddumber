@@ -245,7 +245,7 @@ For Software:
 None
 ## Run
 Open index.html
-#Project Documentation
+# Project Documentation
 For Software:
 ## Screenshots (Add at least 3)
 ![Logo](/ss/Screenshot2.jpeg)
