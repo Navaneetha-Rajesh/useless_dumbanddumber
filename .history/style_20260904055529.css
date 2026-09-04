@@ -554,16 +554,15 @@ body, html {
     position: absolute;
 
     /* Adjust these two values until it sits beside the house */
-    left: 55%;
-    top: 34%;
+    left: 50%;
+    top: 36%;
 
     background: transparent;
     border: none;
     outline: none;
 
-    font-size: 16px;
+    font-size: 22px;
     line-height: 1;
-    opacity: 0.75;
 
     cursor: pointer;
     z-index: 1000;
@@ -573,71 +572,14 @@ body, html {
     transition:
         transform 0.2s ease,
         filter 0.2s ease;
-        
+        opacity 0.01s ease;
 }
 
 #flower-hotspot:hover {
-    transform: scale(1.4);
-opacity: 1;
+    transform: scale(1.25) rotate(-8deg);
     filter: brightness(1.15);
 }
 
 #flower-hotspot:focus {
     outline: none;
-
-}
-/* =========================
-   SECRET STORY MODAL
-========================= */
-
-#secret-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-#secret-modal .modal-content {
-    width: min(600px, 90vw);
-    max-height: 80vh;
-
-    overflow-y: auto;
-
-    padding: 28px 32px;
-    box-sizing: border-box;
-
-    border-radius: 20px;
-}
-
-/* Secret story title */
-#secret-modal h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Story paragraphs */
-#secret-modal p {
-    margin: 0 0 14px;
-    line-height: 1.55;
-}
-
-/* Last paragraph */
-#secret-modal p:last-child {
-    margin-bottom: 0;
-}
-
-/* Nice scrollbar */
-#secret-modal .modal-content::-webkit-scrollbar {
-    width: 6px;
-}
-
-#secret-modal .modal-content::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.35);
-}
-
-#secret-modal .modal-content::-webkit-scrollbar-track {
-    background: transparent;
 }

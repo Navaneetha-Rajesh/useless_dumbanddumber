@@ -13,21 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Close button:", closeModal);
 
 //flower secret story
-const flowerHotspot = document.getElementById("flower-hotspot");
-const secretModal = document.getElementById("secret-modal");
-const closeSecretModal = document.getElementById("close-secret-modal");
-
-if (flowerHotspot && secretModal) {
-    flowerHotspot.addEventListener("click", () => {
-        secretModal.classList.remove("hidden");
-    });
-}
-
-if (closeSecretModal && secretModal) {
-    closeSecretModal.addEventListener("click", () => {
-        secretModal.classList.add("hidden");
-    });
-}  
+  
   // ======================================
 // MANGO Badai STORIES 🥭
 // ======================================

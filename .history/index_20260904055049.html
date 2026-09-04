@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badai Bhaskar</title>
+  <link rel="stylesheet" href="style.css">
+  
+ 
+  <!-- TensorFlow & MediaPipe Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-cpu"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+</head>
+<body>
+
+<header class="top-nav">
+  <div id="status-tag" class="hidden">📱 Phone Detected</div>
+  <img src="assets/logo.png" id="logo" alt="Badai Bhaskar Logo">
+</header>
+
+  <!-- Stage Area (Ammavan Canvas) -->
+<main id="stage">
+    <button
+        id="house-hotspot"
+        type="button"
+        aria-label="Click the house"
+    ></button>
+
+    <button id="mango-1" class="mango" type="button">🥭</button>
+    <button id="mango-2" class="mango" type="button">🥭</button>
+    <button id="mango-3" class="mango" type="button">🥭</button>
+    <button id="mango-4" class="mango" type="button">🥭</button>
+
+    <button id="flower-hotspot" type="button" aria-label="Discover the secret story">
+  🌸
+</button>
+    <button id="coconut" class="coconut" type="button">🥥</button>
+
+    <!-- 🐐 Invisible clickable area over the goat -->
+    <button
+        id="goat-hotspot"
+        type="button"
+        aria-label="Click the goat">
+    </button>
+
+    <!-- 🐐 Goat sound -->
+    <audio id="goat-sound" preload="auto">
+        <source src="assets/sounds/goat.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="bhaskar-container">
+        <div id="speech-bubble"></div>
+
+        <img
+            id="bhaskar-avatar"
+            src="assets/avatar/uncle-idle.png"
+            alt="Badai Bhaskar">
+    </div>
+
+    <!-- Webcam used by the AI detection -->
+    <video
+        id="webcam"
+        autoplay
+        playsinline
+        muted
+        style="display: none;">
+    </video>
+
+</main>
+
+  <!-- Hidden Camera Stream for Background Processing -->
+  <video id="webcam" autoplay playsinline muted style="display: none;">
+    document.getElementById('webcam').style.display = 'block';
+  </video>
+
+  <!-- Glassmorphism Explainer Modal -->
+<div id="info-modal" class="modal hidden">
+  <div class="modal-content glass">
+
+    <button id="close-modal" aria-label="Close">&times;</button>
+
+    <h2>About Ayalathe Ammavan</h2>
+
+    <p>
+     
+
+
+
+Meet Ayalathe Ammavan aka Appurathe Veetile Ammavan — a legendary uncle who has absolutely no qualifications to judge you, yet somehow feels professionally obligated to do so.
+</p>
+
+<p>
+Trained in the ancient art of “ഞങ്ങളുടെ കാലത്ത്…”, Ammavan monitors your posture, catches you using your phone, detects your sleeping habits, and blabbers with 100% confidence and 0% evidence.
+</p>
+<p>
+
+His mission: Yapping.
+</p>
+<p>
+His qualification: Trust me, മോനേ. 😌
+</p>
+
+<p>
+Warning: Clicking this logo may result in unexpected advice from an uncle who wasn't even asked.
+    </p>
+
+  </div>
+</div>
+
+  <script src="js/bhaskarEngine.js"></script>
+  <script src="js/detectionEngine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
