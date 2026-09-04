@@ -203,6 +203,14 @@ Each mango plays a different story, so you never know what nonsense you're going
 
 ---
 
+## If the judgmental stares, the goat, and the badai mango weren't enough:
+
+- 🥥 Hidden among the foliage hangs a very suspicious coconut.
+- 👆 Click the coconut.
+- 🔊 Ammavan screams **"ഗാംഗേയ്...!"**.
+- 🤷 Completely unnecessary drama.
+- ✅ Essential neighbourhood realism.
+
 # Technical Details
 
 ## Technologies/Components Used
@@ -220,6 +228,26 @@ Each mango plays a different story, so you never know what nonsense you're going
 - **Git & GitHub** – Version control and collaboration
 - **VS Code** – Development
 
+The application runs completely in the browser.
+
+The webcam feed is processed using **TensorFlow.js**.
+
+**MoveNet** is used to estimate the user's body pose and analyse posture, while **COCO-SSD** identifies objects such as mobile phones and bottles and detects the number of people present in the frame.
+
+The application also analyses the camera feed to detect when the camera appears to be covered.
+
+Based on the detected state, Ammavan changes his expression, displays Malayalam dialogue, plays the corresponding audio reaction, and reacts accordingly.
+
+The application also contains hidden interactive elements scattered throughout the background:
+
+* A clickable hotspot over the **aadu (ആട്)** lets you interact with the goat, triggering an HTML5 audio element that plays an authentic goat sound.
+
+
+* A hidden **mango (🥭)** hotspot in the tree canopy triggers Ammavan's storytelling mode alongside pre-saved Badai audio tracks.
+
+
+* A secret **coconut (🥥)** hotspot nestled near the foliage triggers the iconic **"ഗാംഗേയ്...!"** audio reaction, sending Ammavan into an instant state of flabbergasted shock.
+
 ### For Hardware:
 
 No special hardware required.
@@ -234,28 +262,38 @@ All you need is:
 
 ---
 
-# Implementation
+### Implementation
+For Software:
+# Installation
+None
 
-## Software
+# Run
+Open index.html
 
-The application runs completely in the browser.
+### Project Documentation
+For Software:
 
-The webcam feed is processed using **TensorFlow.js**.
 
-**MoveNet** is used to estimate the user's body pose and analyse posture, while **COCO-SSD** identifies objects such as mobile phones and bottles and detects the number of people present in the frame.
+# Screenshots (Add at least 3)
+![Screenshot1](Add screenshot 1 here with proper name)
+*Add caption explaining what this shows*
 
-The application also analyses the camera feed to detect when the camera appears to be covered.
+![Screenshot2](Add screenshot 2 here with proper name)
+*Add caption explaining what this shows*
 
-Based on the detected state, Ammavan changes his expression, displays Malayalam dialogue, plays the corresponding audio reaction, and reacts accordingly.
+![Screenshot3](Add screenshot 3 here with proper name)
+*Add caption explaining what this shows*
 
-The application also contains a hidden interactive element in the background. A clickable hotspot is positioned over the **aadu (ആട്)**, allowing the user to interact with the goat. When clicked, JavaScript triggers an HTML5 audio element and plays the goat's sound.
+# Diagrams
+![Workflow](Add your workflow/architecture diagram here)
+*Add caption explaining your workflow*
 
 ---
 
 ## Detection Flow
 
 ```text
-                         📷 Webcam
+                        📷 Webcam
                             │
                             ▼
                    ┌─────────────────┐
@@ -302,3 +340,20 @@ The application also contains a hidden interactive element in the background. A 
                          ▼
                   🗣️ Malayalam
                     Commentary
+
+                    ### Project Demo
+# Video
+[Add your demo video link here]
+*Explain what the video demonstrates*
+
+# Additional Demos
+[Add any extra demo materials/links]
+
+## Team Contributions
+- Eza Mariyam Robin: UI Designing
+- Navaneetha Rajesh: Frontend
+---
+Made with ❤️ at TinkerHub Useless Projects 
+
+![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
